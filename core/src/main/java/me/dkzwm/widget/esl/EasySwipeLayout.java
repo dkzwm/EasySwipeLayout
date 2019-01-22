@@ -414,20 +414,25 @@ public class EasySwipeLayout extends FrameLayout {
     }
 
     protected boolean onFling(float vx, final float vy) {
-        boolean handler;
-        int velocity;
-        if (mCurrEdge == Constants.DIRECTION_LEFT) {
-            handler = vx > mMinimumFlingVelocity;
-            velocity = (int) vx;
-        } else if (mCurrEdge == Constants.DIRECTION_RIGHT) {
-            handler = vx < -mMinimumFlingVelocity;
-            velocity = (int) vx;
-        } else if (mCurrEdge == Constants.DIRECTION_TOP) {
-            handler = vy > mMinimumFlingVelocity;
-            velocity = (int) vy;
-        } else {
-            handler = vy < -mMinimumFlingVelocity;
-            velocity = (int) vy;
+        boolean handler = false;
+        int velocity = 0;
+        switch (mCurrEdge) {
+            case Constants.DIRECTION_LEFT:
+                handler = vx > mMinimumFlingVelocity;
+                velocity = (int) vx;
+                break;
+            case Constants.DIRECTION_RIGHT:
+                handler = vx < -mMinimumFlingVelocity;
+                velocity = (int) vx;
+                break;
+            case Constants.DIRECTION_TOP:
+                handler = vy > mMinimumFlingVelocity;
+                velocity = (int) vy;
+                break;
+            case Constants.DIRECTION_BOTTOM:
+                handler = vy < -mMinimumFlingVelocity;
+                velocity = (int) vy;
+                break;
         }
         if (handler && mDrawer != null) {
             int[] calc = mScroller.calc(velocity);
@@ -484,6 +489,7 @@ public class EasySwipeLayout extends FrameLayout {
         mScroller.stop();
         mCurrPosF = 0;
         mTriggered = false;
+        invalidate();
     }
 
     private class EasyScroller implements Runnable {
