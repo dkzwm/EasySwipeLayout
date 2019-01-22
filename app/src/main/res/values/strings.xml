@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">EasySwipeLayout</string>
+    <string name="press_again_to_exit">Press the back button again to exit</string>
+    <string name="specified_the_class_name">.graphics.CustomDrawer</string>
+    <string name="custom">Test Custom</string>
+    <string name="only_supports_right_side_swipe">Only supports right side swipe</string>
+</resources>

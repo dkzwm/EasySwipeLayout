@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="EasySwipeLayout">
+        <attr name="esl_edgeDiff" format="dimension"/>
+        <attr name="esl_style" format="enum">
+            <enum name="none" value="0"/>
+            <enum name="miui" value="1"/>
+            <enum name="jike" value="2"/>
+            <enum name="custom" value="3"/>
+        </attr>
+        <attr name="esl_specified" format="string"/>
+        <attr name="esl_resistance" format="float"/>
+        <attr name="esl_durationOfClose" format="integer"/>
+        <attr name="esl_direction" format="enum">
+            <!-- left and top and right and bottom -->
+            <enum name="left" value="0x01"/>
+            <enum name="top" value="0x02"/>
+            <enum name="right" value="0x04"/>
+            <enum name="bottom" value="0x08"/>
+            <!-- left and right -->
+            <enum name="horizontal" value="0x05"/>
+            <!-- top and bottom -->
+            <enum name="vertical" value="0x0A"/>
+            <enum name="all" value="0x0F"/>
+        </attr>
+    </declare-styleable>
+</resources>

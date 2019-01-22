@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<me.dkzwm.widget.esl.EasySwipeLayout
+    android:id="@+id/easySwipeLayout"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:esl_direction="right"
+    app:esl_specified="@string/specified_the_class_name"
+    app:esl_style="custom">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:padding="16dp"
+        android:text="@string/only_supports_right_side_swipe"
+        android:textColor="@android:color/black"
+        android:textSize="24sp"/>
+</me.dkzwm.widget.esl.EasySwipeLayout>
