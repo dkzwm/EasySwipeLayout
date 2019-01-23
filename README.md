@@ -16,9 +16,8 @@ A simple sliding layout view, 一款简单高效的滑动库，模仿MIUI滑动�
 ```
 dependencies {
     implementation 'me.dkzwm.widget.esl:core:0.0.1'
-	
-	AndroidX版本
-	implementation 'me.dkzwm.widget.esl:core:0.0.1.androidx'
+    AndroidX版本
+    implementation 'me.dkzwm.widget.esl:core:0.0.1.androidx'
 }
 ```
 
