@@ -1,28 +1,28 @@
 # EasySwipeLayout
 [![Release](https://img.shields.io/badge/JCenter-0.0.1-brightgreen.svg)](https://bintray.com/dkzwm/maven/esl)
 [![MinSdk](https://img.shields.io/badge/MinSdk-14-blue.svg)](https://developer.android.com/about/versions/android-4.0.html)
-## [English](https://github.com/dkzwm/EasySwipeLayout/blob/master/README_EN.md) | 中文
-A simple sliding layout view, 一款简单高效的滑动库，模仿MIUI滑动返回功能。
+## English | [中文](https://github.com/dkzwm/EasySwipeLayout/blob/master/README.md)
+A simple sliding layout view
 
-## 特性:
-- 支持上下左右边缘拉出.    
-- 支持全局添加、Xml添加、单独添加.    
-- 支持自定义效果.    
-- 支持多点触摸.    
+## Features:
+- Supports all direction.    
+- Supports code addition, xml addition.    
+- Supports custom drawer.    
+- Supports Multi-Touch.    
 
-## 引入
-添加如下依赖到你的 build.gradle 文件:
+## Installation
+Add the following dependency to your build.gradle file:
 ```
 dependencies {
     implementation 'me.dkzwm.widget.esl:core:0.0.1'
 }
 ```
 
-## 快照
+## Snapshot
 ![](https://github.com/dkzwm/EasySwipeLayout/blob/master/snapshot/demo.gif)
 
-## 使用   
-#### 在Xml中配置
+## How to use  
+#### Xml
 ```
 <?xml version="1.0" encoding="utf-8"?>
 <me.dkzwm.widget.esl.EasySwipeLayout
@@ -32,13 +32,11 @@ dependencies {
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:esl_direction="right"
-	//指定自定义Drawer的类名
     app:esl_specified="@string/specified_the_class_name"
-	//指定样式为自定义，此时需要配置esl_specified属性
     app:esl_style="custom">
 </me.dkzwm.widget.esl.EasySwipeLayout>
 ```
-####  Java代码全局配置
+####  Global
 ```
 EasySwipeConfig config =
       new EasySwipeConfig.Builder(application)
@@ -48,7 +46,7 @@ EasySwipeConfig config =
 EasySwipeManager.init(config);
 }
 ```
-####  Java代码单独配置
+####  Separate
 ```
 EasySwipeLayout layout = EasySwipeManager.attach(activity);
 if (layout != null) {
@@ -63,26 +61,26 @@ if (layout != null) {
              });
 }
 ```
-#### Xml属性 
-|名称|类型|描述|
+#### Xml attr
+|Name|Format|Desc|
 |:---:|:---:|:---:|
-|esl_edgeDiff|reference|配置边缘点击容差，默认为2倍系统触摸容差（系统ScaledTouchSlop*2）|
-|esl_style|enum|配置拉出的效果，默认MIUI效果|
-|esl_specified|string|配置自定义效果的实现类路径，仅当`esl_style`为`custom`时生效|
-|esl_resistance|float|配置移动阻尼（默认:`3f`）|
-|esl_durationOfClose|int|配置收起效果的时长（默认:`500`）|
-|esl_direction|enum|配置支持划出方向（默认:`左边缘往右划`）|
+|esl_edgeDiff|reference|Configure the distance in pixels a touch can wander before we think the user is scrolling（default:two times of system ScaledTouchSlop）|
+|esl_style|enum|Configure the style of Drawer, (Default: MIUI)|
+|esl_specified|string|Configure the path to the implementation class for the custom style，Only valid when `esl_style` is `custom`|
+|esl_resistance|float|Configure resistance to touch movement（Default:`3f`）|
+|esl_durationOfClose|int|Configure the duration of close Drawer（Default:`500`）|
+|esl_direction|enum|Configure support direction（Default:`left`）|
 
-#### java属性设置方法
-|名称|参数|描述|
+#### Java method
+|Name|Params|Desc|
 |:---:|:---:|:---:|
-|setSwipeListener|OnSwipeListener|配置监听|
-|setDirection|int|配置支持划出方向|
-|setStyle|int,String|配置拉出的效果|
-|setDrawer|Drawer|配置指定自定义效果实现|
-|setEdgeDiff|int|配置边缘点击容差|
-|setResistance|float|配置移动阻尼|
-|setDurationOfClose|int|配置收起效果的时长|
+|setSwipeListener|OnSwipeListener|Configure listener|
+|setDirection|int|Configure support direction|
+|setStyle|int,String|Configure the style of Drawer|
+|setDrawer|Drawer|Configure the custom Drawer|
+|setEdgeDiff|int|Configure the distance in pixels a touch can wander before we think the user is scrolling|
+|setResistance|float|Configure resistance to touch movement|
+|setDurationOfClose|int|Configure the duration of close Drawer|
 
 ## License
 

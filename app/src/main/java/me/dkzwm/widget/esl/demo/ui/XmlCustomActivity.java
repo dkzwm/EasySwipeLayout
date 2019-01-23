@@ -7,11 +7,11 @@ import me.dkzwm.widget.esl.IgnoreMakeEasy;
 import me.dkzwm.widget.esl.OnSwipeListener;
 import me.dkzwm.widget.esl.demo.R;
 
-public class CustomActivity extends AppCompatActivity implements IgnoreMakeEasy {
+public class XmlCustomActivity extends AppCompatActivity implements IgnoreMakeEasy {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_custom);
+        setContentView(R.layout.activity_xml_custom);
         EasySwipeLayout layout = findViewById(R.id.easySwipeLayout);
         layout.setSwipeListener(
                 new OnSwipeListener() {

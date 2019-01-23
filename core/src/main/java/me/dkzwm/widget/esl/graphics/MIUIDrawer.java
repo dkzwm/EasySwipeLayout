@@ -29,6 +29,7 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.PointF;
+import android.support.annotation.ColorInt;
 import android.util.TypedValue;
 
 public class MIUIDrawer extends Drawer {
@@ -41,11 +42,13 @@ public class MIUIDrawer extends Drawer {
     protected int mBackgroundMaxDynamicSize;
     protected int mArrowHeight;
     protected int mArrowWidth;
+    @ColorInt protected int mBackgroundColor = Color.BLACK;
+    @ColorInt protected int mArrowColor = Color.WHITE;
 
     public MIUIDrawer(Context context) {
         super(context);
         mBackgroundPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-        mBackgroundPaint.setColor(Color.BLACK);
+        mBackgroundPaint.setColor(mBackgroundColor);
         mBackgroundPaint.setStrokeWidth(1);
         mBackgroundPaint.setStyle(Paint.Style.FILL);
         mBackgroundPaint.setAlpha((int) (0.74f * 255));
@@ -69,7 +72,7 @@ public class MIUIDrawer extends Drawer {
                                 mContext.getResources().getDisplayMetrics());
         mArrowPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         mArrowPaint.setStyle(Paint.Style.STROKE);
-        mArrowPaint.setColor(Color.WHITE);
+        mArrowPaint.setColor(mArrowColor);
         mArrowPaint.setStrokeWidth(mArrowStrokeWidth);
         mArrowPaint.setStrokeJoin(Paint.Join.ROUND);
         mBackgroundFixedSize = context.getResources().getDisplayMetrics().heightPixels / 3.5f;
@@ -83,10 +86,46 @@ public class MIUIDrawer extends Drawer {
 
     public void setBackgroundMaxDynamicSize(int size) {
         mBackgroundMaxDynamicSize = size;
+        requestInvalidate();
     }
 
     public void setBackgroundFixedSize(int size) {
         mBackgroundFixedSize = size;
+        requestInvalidate();
+    }
+
+    public void setBackgroundColor(@ColorInt int color) {
+        if (mBackgroundColor != color) {
+            mBackgroundColor = color;
+            mBackgroundPaint.setColor(mBackgroundColor);
+            requestInvalidate();
+        }
+    }
+
+    public void setArrowColor(@ColorInt int color) {
+        if (mArrowColor != color) {
+            mArrowColor = color;
+            mArrowPaint.setColor(mArrowColor);
+            requestInvalidate();
+        }
+    }
+
+    public void setArrowStrokeWidth(float arrowStrokeWidth) {
+        if (mArrowStrokeWidth != arrowStrokeWidth) {
+            mArrowStrokeWidth = arrowStrokeWidth;
+            mArrowPaint.setStrokeWidth(mArrowStrokeWidth);
+            requestInvalidate();
+        }
+    }
+
+    public void setArrowHeight(int arrowHeight) {
+        mArrowHeight = arrowHeight;
+        requestInvalidate();
+    }
+
+    public void setArrowWidth(int arrowWidth) {
+        mArrowWidth = arrowWidth;
+        requestInvalidate();
     }
 
     @Override

@@ -37,6 +37,35 @@ import java.util.List;
 public class EasySwipeManager {
     private static boolean sInitialized = false;
 
+    public static EasySwipeLayout attach(Activity activity) {
+        View view = activity.getWindow().getDecorView();
+        if (view instanceof ViewGroup) {
+            ViewGroup decor = (ViewGroup) view;
+            View easySwipeLayout = decor.findViewById(R.id.sl_swipe_gesture_layout);
+            if (easySwipeLayout != null) return null;
+            ViewGroup.LayoutParams layoutParams =
+                    new ViewGroup.LayoutParams(
+                            ViewGroup.LayoutParams.MATCH_PARENT,
+                            ViewGroup.LayoutParams.MATCH_PARENT);
+            EasySwipeLayout layout = new EasySwipeLayout(activity);
+            decor.addView(layout, layoutParams);
+            return layout;
+        }
+        return null;
+    }
+
+    public static void detach(Activity activity) {
+        View view = activity.getWindow().getDecorView();
+        if (view instanceof ViewGroup) {
+            ViewGroup decor = (ViewGroup) view;
+            EasySwipeLayout layout = decor.findViewById(R.id.sl_swipe_gesture_layout);
+            if (layout != null) {
+                layout.setSwipeListener(null);
+                decor.removeView(layout);
+            }
+        }
+    }
+
     public static void init(EasySwipeConfig config) {
         if (sInitialized) throw new IllegalArgumentException("Can only be initialized once");
         if (!config.mOnlyRunMainProcess

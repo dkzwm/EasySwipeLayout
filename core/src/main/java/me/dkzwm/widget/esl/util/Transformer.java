@@ -48,7 +48,7 @@ public class Transformer {
                 constructor.setAccessible(true);
                 return constructor.newInstance(context);
             } catch (Exception e) {
-                throw new RuntimeException("Could not inflate Painter subclass " + fullName, e);
+                throw new RuntimeException("Could not inflate Drawer subclass " + fullName, e);
             }
         }
     }

@@ -39,6 +39,7 @@ import android.view.ViewConfiguration;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.Scroller;
+
 import me.dkzwm.widget.esl.annotation.Direction;
 import me.dkzwm.widget.esl.annotation.Style;
 import me.dkzwm.widget.esl.config.Constants;
@@ -47,11 +48,15 @@ import me.dkzwm.widget.esl.graphics.JIKEDrawer;
 import me.dkzwm.widget.esl.graphics.MIUIDrawer;
 import me.dkzwm.widget.esl.util.Transformer;
 
-/** Easy to swipe */
+/**
+ * Easy to swipe
+ */
 public class EasySwipeLayout extends FrameLayout {
     private float mResistance = Constants.DEFAULT_RESISTANCE;
-    @Direction private int mDirection = Constants.DIRECTION_LEFT;
-    @Style private int mStyle = Constants.STYLE_NONE;
+    @Direction
+    private int mDirection = Constants.DIRECTION_LEFT;
+    @Style
+    private int mStyle = Constants.STYLE_NONE;
     private int mDurationOfClose = Constants.DEFAULT_DURATION_OF_CLOSE;
     private int mMinimumFlingVelocity;
     private int mMaximumFlingVelocity;
@@ -159,8 +164,9 @@ public class EasySwipeLayout extends FrameLayout {
 
     public void setDrawer(@NonNull Drawer drawer) {
         mStyle = Constants.STYLE_CUSTOM;
-        if (mDrawer != null) mDrawer.release();
+        if (mDrawer != null) mDrawer.onDetached();
         mDrawer = drawer;
+        mDrawer.onAttached(this);
         setWillNotDraw(false);
         if (mDrawer != null && getWidth() > 0 || getHeight() > 0)
             mDrawer.onSizeChanged(getWidth(), getHeight());
@@ -173,7 +179,7 @@ public class EasySwipeLayout extends FrameLayout {
         checkConfig();
     }
 
-    public void setResistance(@FloatRange(from = 0, to = 1) float resistance) {
+    public void setResistance(@FloatRange(from = 0) float resistance) {
         mResistance = resistance;
     }
 
@@ -202,6 +208,12 @@ public class EasySwipeLayout extends FrameLayout {
                 throw new IllegalArgumentException(
                         "EdgeDiff must be less than the half of " + "height");
         }
+    }
+
+    @Override
+    public void setEnabled(boolean enabled) {
+        super.setEnabled(enabled);
+        if (!enabled) reset();
     }
 
     @Override
@@ -350,9 +362,9 @@ public class EasySwipeLayout extends FrameLayout {
     private void calcOffset(float x, float y) {
         float offset;
         if ((mCurrEdge & Constants.DIRECTION_HORIZONTAL) != 0) {
-            offset = (x - mLastPoint.x) * mResistance;
+            offset = (x - mLastPoint.x) / mResistance;
         } else {
-            offset = (y - mLastPoint.y) * mResistance;
+            offset = (y - mLastPoint.y) / mResistance;
         }
         mCurrPosF = mCurrPosF + offset;
         if (mCurrEdge == Constants.DIRECTION_LEFT || mCurrEdge == Constants.DIRECTION_TOP) {
@@ -407,8 +419,8 @@ public class EasySwipeLayout extends FrameLayout {
             ((ViewGroup) getParent()).dispatchTouchEvent(ev);
         } else {
             super.dispatchTouchEvent(ev);
-            ev.recycle();
         }
+        ev.recycle();
         mHasSendCancelEvent = false;
         mHasSendDownEvent = true;
     }
@@ -439,8 +451,10 @@ public class EasySwipeLayout extends FrameLayout {
             mScroller.startScroll(
                     Math.min(calc[0] + Math.round(mCurrPosF), mDrawer.getMaxSize()),
                     Math.min(calc[1], mDurationOfClose));
+            return true;
+        } else {
+            return false;
         }
-        return handler;
     }
 
     @Override
@@ -469,9 +483,16 @@ public class EasySwipeLayout extends FrameLayout {
     }
 
     @Override
+    protected void onAttachedToWindow() {
+        super.onAttachedToWindow();
+        if (mDrawer != null) mDrawer.onAttached(this);
+    }
+
+    @Override
     protected void onDetachedFromWindow() {
         super.onDetachedFromWindow();
         reset();
+        if (mDrawer != null) mDrawer.onDetached();
     }
 
     private void updatePos() {

@@ -37,6 +37,6 @@ public interface Constants {
     int STYLE_JIKE = 2;
     int STYLE_CUSTOM = 3;
 
-    float DEFAULT_RESISTANCE = 0.35F;
+    float DEFAULT_RESISTANCE = 3F;
     int DEFAULT_DURATION_OF_CLOSE = 500;
 }

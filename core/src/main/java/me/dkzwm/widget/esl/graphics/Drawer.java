@@ -27,9 +27,12 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.PointF;
 import android.support.annotation.CallSuper;
+import me.dkzwm.widget.esl.EasySwipeLayout;
 
 public abstract class Drawer {
     protected Context mContext;
+    protected EasySwipeLayout mSwipeLayout;
+    protected boolean mAttached = false;
     protected int mWidth = 0;
     protected int mHeight = 0;
 
@@ -40,6 +43,11 @@ public abstract class Drawer {
     public void onSizeChanged(int width, int height) {
         mWidth = width;
         mHeight = height;
+    }
+
+    public void onAttached(EasySwipeLayout layout) {
+        mAttached = true;
+        mSwipeLayout = layout;
     }
 
     public abstract int getMaxSize();
@@ -54,8 +62,14 @@ public abstract class Drawer {
 
     public abstract boolean canTrigger(int edge, float pos);
 
+    protected void requestInvalidate() {
+        if (mSwipeLayout != null) mSwipeLayout.postInvalidate();
+    }
+
     @CallSuper
-    public void release() {
+    public void onDetached() {
+        mAttached = false;
+        mSwipeLayout = null;
         mContext = null;
     }
 }

@@ -66,16 +66,16 @@ public class JIKEDrawer extends MIUIDrawer {
         canvas.drawPath(mBackgroundPath, mBackgroundPaint);
         if (size >= mBackgroundMaxDynamicSize / 2.5f) {
             final int arrowAlpha = calcArrowAlpha(size);
-            float arrowZoom = (float) size / mBackgroundMaxDynamicSize;
-            float arrowAngle = arrowZoom < 0.8f ? 0 : (arrowZoom - 0.8f) * 2;
+            float arrowScale = (float) size / mBackgroundMaxDynamicSize;
+            float arrowAngle = arrowScale < 0.8f ? 0 : (arrowScale - 0.8f) * 2;
             mArrowPath.reset();
             mArrowPath.moveTo(
                     size / 2f + (mArrowWidth * arrowAngle),
-                    movedPoint.y - (arrowZoom * mArrowHeight / 2));
+                    movedPoint.y - (arrowScale * mArrowHeight / 2));
             mArrowPath.lineTo(size / 2f - (mArrowWidth * arrowAngle), movedPoint.y);
             mArrowPath.lineTo(
                     size / 2f + (mArrowWidth * arrowAngle),
-                    movedPoint.y + (arrowZoom * mArrowHeight / 2));
+                    movedPoint.y + (arrowScale * mArrowHeight / 2));
             mArrowPaint.setAlpha(arrowAlpha);
             canvas.drawPath(mArrowPath, mArrowPaint);
         }
@@ -103,15 +103,15 @@ public class JIKEDrawer extends MIUIDrawer {
         canvas.drawPath(mBackgroundPath, mBackgroundPaint);
         if (size >= mBackgroundMaxDynamicSize / 2.5f) {
             final int arrowAlpha = calcArrowAlpha(size);
-            float arrowZoom = (float) size / mBackgroundMaxDynamicSize;
-            float arrowAngle = arrowZoom < 0.8f ? 0 : (arrowZoom - 0.8f) * 2;
+            float arrowScale = (float) size / mBackgroundMaxDynamicSize;
+            float arrowAngle = arrowScale < 0.8f ? 0 : (arrowScale - 0.8f) * 2;
             mArrowPath.reset();
             mArrowPath.moveTo(
-                    movedPoint.x - (arrowZoom * mArrowHeight / 2),
+                    movedPoint.x - (arrowScale * mArrowHeight / 2),
                     size / 2f + (mArrowWidth * arrowAngle));
             mArrowPath.lineTo(movedPoint.x, size / 2f - (mArrowWidth * arrowAngle));
             mArrowPath.lineTo(
-                    movedPoint.x + (arrowZoom * mArrowHeight / 2),
+                    movedPoint.x + (arrowScale * mArrowHeight / 2),
                     size / 2f + (mArrowWidth * arrowAngle));
             mArrowPaint.setAlpha(arrowAlpha);
             canvas.drawPath(mArrowPath, mArrowPaint);
@@ -144,16 +144,16 @@ public class JIKEDrawer extends MIUIDrawer {
         if (size >= mBackgroundMaxDynamicSize / 2.5f) {
             final int arrowAlpha = calcArrowAlpha(size);
             final int x = mWidth - size;
-            float arrowZoom = (float) size / mBackgroundMaxDynamicSize;
-            float arrowAngle = arrowZoom < 0.8f ? 0 : (arrowZoom - 0.8f) * 2;
+            float arrowScale = (float) size / mBackgroundMaxDynamicSize;
+            float arrowAngle = arrowScale < 0.8f ? 0 : (arrowScale - 0.8f) * 2;
             mArrowPath.reset();
             mArrowPath.moveTo(
                     x + size / 2f - (mArrowWidth * arrowAngle),
-                    movedPoint.y - (arrowZoom * mArrowHeight / 2));
+                    movedPoint.y - (arrowScale * mArrowHeight / 2));
             mArrowPath.lineTo(x + size / 2f + (mArrowWidth * arrowAngle), movedPoint.y);
             mArrowPath.lineTo(
                     x + size / 2f - (mArrowWidth * arrowAngle),
-                    movedPoint.y + (arrowZoom * mArrowHeight / 2));
+                    movedPoint.y + (arrowScale * mArrowHeight / 2));
             mArrowPaint.setAlpha(arrowAlpha);
             canvas.drawPath(mArrowPath, mArrowPaint);
         }
@@ -183,15 +183,15 @@ public class JIKEDrawer extends MIUIDrawer {
         if (size >= mBackgroundMaxDynamicSize / 2.5f) {
             final int arrowAlpha = calcArrowAlpha(size);
             final int y = mHeight - size;
-            float arrowZoom = (float) size / mBackgroundMaxDynamicSize;
-            float arrowAngle = arrowZoom < 0.8f ? 0 : (arrowZoom - 0.8f) * 2;
+            float arrowScale = (float) size / mBackgroundMaxDynamicSize;
+            float arrowAngle = arrowScale < 0.8f ? 0 : (arrowScale - 0.8f) * 2;
             mArrowPath.reset();
             mArrowPath.moveTo(
-                    movedPoint.x - (arrowZoom * mArrowHeight / 2),
+                    movedPoint.x - (arrowScale * mArrowHeight / 2),
                     y + size / 2f - (mArrowWidth * arrowAngle));
             mArrowPath.lineTo(movedPoint.x, y + size / 2f + (mArrowWidth * arrowAngle));
             mArrowPath.lineTo(
-                    movedPoint.x + (arrowZoom * mArrowHeight / 2),
+                    movedPoint.x + (arrowScale * mArrowHeight / 2),
                     y + size / 2f - (mArrowWidth * arrowAngle));
             mArrowPaint.setAlpha(arrowAlpha);
             canvas.drawPath(mArrowPath, mArrowPaint);
