@@ -1,6 +1,7 @@
 # EasySwipeLayout
 [![Release](https://img.shields.io/badge/JCenter-0.0.1-brightgreen.svg)](https://bintray.com/dkzwm/maven/esl)
 [![MinSdk](https://img.shields.io/badge/MinSdk-14-blue.svg)](https://developer.android.com/about/versions/android-4.0.html)
+[![License](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/dkzwm/SmoothRefreshLayout/blob/master/LICENSE)
 ## [English](https://github.com/dkzwm/EasySwipeLayout/blob/master/README_EN.md) | 中文
 A simple sliding layout view, 一款简单高效的滑动库，模仿MIUI滑动返回功能。
 
