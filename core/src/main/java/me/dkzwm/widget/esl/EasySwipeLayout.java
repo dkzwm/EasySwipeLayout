@@ -45,13 +45,14 @@ import me.dkzwm.widget.esl.config.Constants;
 import me.dkzwm.widget.esl.graphics.Drawer;
 import me.dkzwm.widget.esl.graphics.JIKEDrawer;
 import me.dkzwm.widget.esl.graphics.MIUIDrawer;
+import me.dkzwm.widget.esl.graphics.NoneDrawer;
 import me.dkzwm.widget.esl.util.Transformer;
 
 /** Easy to swipe */
 public class EasySwipeLayout extends FrameLayout {
     private float mResistance = Constants.DEFAULT_RESISTANCE;
     @Direction private int mDirection = Constants.DIRECTION_LEFT;
-    @Style private int mStyle = Constants.STYLE_NONE;
+    private int mStyle = Constants.STYLE_MIUI;
     private int mDurationOfClose = Constants.DEFAULT_DURATION_OF_CLOSE;
     private int mMinimumFlingVelocity;
     private int mMaximumFlingVelocity;
@@ -102,6 +103,7 @@ public class EasySwipeLayout extends FrameLayout {
                 mEdgeDiff =
                         arr.getDimensionPixelSize(
                                 R.styleable.EasySwipeLayout_esl_edgeDiff, mEdgeDiff);
+                if (mEdgeDiff <= 0) mEdgeDiff = mTouchSlop * 2;
                 mDirection = arr.getInt(R.styleable.EasySwipeLayout_esl_direction, mDirection);
                 mStyle = arr.getInt(R.styleable.EasySwipeLayout_esl_style, mStyle);
                 mResistance = arr.getFloat(R.styleable.EasySwipeLayout_esl_resistance, mResistance);
@@ -114,14 +116,24 @@ public class EasySwipeLayout extends FrameLayout {
                                     context,
                                     arr.getString(R.styleable.EasySwipeLayout_esl_specified));
                     setWillNotDraw(mDrawer == null);
+                } else if (mStyle == Constants.STYLE_NONE) {
+                    mDrawer = new NoneDrawer(getContext());
+                    setWillNotDraw(true);
+                } else if (mStyle == Constants.STYLE_MIUI) {
+                    mDrawer = new MIUIDrawer(getContext());
+                    setWillNotDraw(false);
                 } else {
-                    setStyle(mStyle, null);
+                    mDrawer = new JIKEDrawer(getContext());
+                    setWillNotDraw(false);
                 }
             } finally {
                 arr.recycle();
             }
+        } else {
+            mDrawer = new MIUIDrawer(getContext());
+            setWillNotDraw(false);
+            mEdgeDiff = mTouchSlop * 2;
         }
-        if (mEdgeDiff <= 0) mEdgeDiff = mTouchSlop * 2;
         mScroller = new EasyScroller();
     }
 
@@ -138,34 +150,41 @@ public class EasySwipeLayout extends FrameLayout {
             mStyle = style;
             switch (mStyle) {
                 case Constants.STYLE_NONE:
-                    mDrawer = null;
+                    mDrawer = new NoneDrawer(getContext());
+                    setWillNotDraw(true);
                     break;
                 case Constants.STYLE_MIUI:
                     mDrawer = new MIUIDrawer(getContext());
+                    setWillNotDraw(false);
                     break;
                 case Constants.STYLE_JIKE:
                     mDrawer = new JIKEDrawer(getContext());
+                    setWillNotDraw(false);
                     break;
                 case Constants.STYLE_CUSTOM:
                     mDrawer = Transformer.parseDrawer(getContext(), className);
+                    setWillNotDraw(mDrawer == null);
                     break;
             }
-            setWillNotDraw(mDrawer == null);
             if (mDrawer != null && getWidth() > 0 || getHeight() > 0)
                 mDrawer.onSizeChanged(getWidth(), getHeight());
             postInvalidate();
         }
     }
 
-    public void setDrawer(@NonNull Drawer drawer) {
+    public void setDrawer(Drawer drawer) {
         mStyle = Constants.STYLE_CUSTOM;
         if (mDrawer != null) mDrawer.onDetached();
         mDrawer = drawer;
-        mDrawer.onAttached(this);
-        setWillNotDraw(false);
-        if (mDrawer != null && getWidth() > 0 || getHeight() > 0)
-            mDrawer.onSizeChanged(getWidth(), getHeight());
-        postInvalidate();
+        if (mDrawer != null) {
+            mDrawer.onAttached(this);
+            setWillNotDraw(false);
+            if (mDrawer != null && getWidth() > 0 || getHeight() > 0)
+                mDrawer.onSizeChanged(getWidth(), getHeight());
+            postInvalidate();
+        } else {
+            setWillNotDraw(true);
+        }
     }
 
     public void setEdgeDiff(@IntRange(from = 0) int edgeDiff) {
@@ -491,7 +510,7 @@ public class EasySwipeLayout extends FrameLayout {
     }
 
     private void updatePos() {
-        if (mStyle == Constants.STYLE_NONE || mDrawer == null) return;
+        if (mDrawer == null) return;
         if (!mTouched && !mTriggered) {
             if (mDrawer.canTrigger(mCurrEdge, Math.abs(mCurrPosF))) {
                 if (mSwipeListener != null) mSwipeListener.onSwipe(mCurrEdge);
