@@ -39,7 +39,6 @@ import android.view.ViewConfiguration;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.Scroller;
-
 import me.dkzwm.widget.esl.annotation.Direction;
 import me.dkzwm.widget.esl.annotation.Style;
 import me.dkzwm.widget.esl.config.Constants;
@@ -48,15 +47,11 @@ import me.dkzwm.widget.esl.graphics.JIKEDrawer;
 import me.dkzwm.widget.esl.graphics.MIUIDrawer;
 import me.dkzwm.widget.esl.util.Transformer;
 
-/**
- * Easy to swipe
- */
+/** Easy to swipe */
 public class EasySwipeLayout extends FrameLayout {
     private float mResistance = Constants.DEFAULT_RESISTANCE;
-    @Direction
-    private int mDirection = Constants.DIRECTION_LEFT;
-    @Style
-    private int mStyle = Constants.STYLE_NONE;
+    @Direction private int mDirection = Constants.DIRECTION_LEFT;
+    @Style private int mStyle = Constants.STYLE_NONE;
     private int mDurationOfClose = Constants.DEFAULT_DURATION_OF_CLOSE;
     private int mMinimumFlingVelocity;
     private int mMaximumFlingVelocity;

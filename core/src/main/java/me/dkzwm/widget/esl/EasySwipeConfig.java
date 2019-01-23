@@ -29,7 +29,6 @@ import android.support.annotation.FloatRange;
 import android.support.annotation.IntRange;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-
 import me.dkzwm.widget.esl.annotation.Direction;
 import me.dkzwm.widget.esl.annotation.Edge;
 import me.dkzwm.widget.esl.annotation.Style;
@@ -47,12 +46,10 @@ public class EasySwipeConfig {
     Application mApplication;
     OnEasySwipeListener mSwipeListener = sSwipeListener;
     boolean mOnlyRunMainProcess;
-    @Style
-    int mStyle = Constants.STYLE_MIUI;
+    @Style int mStyle = Constants.STYLE_MIUI;
     String mClassName;
     Drawer mDrawer;
-    @Direction
-    int mDirection = Constants.DIRECTION_HORIZONTAL;
+    @Direction int mDirection = Constants.DIRECTION_HORIZONTAL;
     float mResistance = Constants.DEFAULT_RESISTANCE;
     int mDurationOfClose = Constants.DEFAULT_DURATION_OF_CLOSE;
     int mEdgeDiff = -1;
