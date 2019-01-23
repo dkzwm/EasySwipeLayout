@@ -26,7 +26,7 @@ package me.dkzwm.widget.esl.graphics;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.PointF;
-import android.support.annotation.CallSuper;
+import androidx.annotation.CallSuper;
 import me.dkzwm.widget.esl.EasySwipeLayout;
 
 public abstract class Drawer {

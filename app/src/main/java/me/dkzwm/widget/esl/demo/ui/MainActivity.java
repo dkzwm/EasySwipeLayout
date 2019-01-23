@@ -3,9 +3,9 @@ package me.dkzwm.widget.esl.demo.ui;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Toast;
+import androidx.appcompat.app.AppCompatActivity;
 import me.dkzwm.widget.esl.demo.R;
 
 public class MainActivity extends AppCompatActivity {

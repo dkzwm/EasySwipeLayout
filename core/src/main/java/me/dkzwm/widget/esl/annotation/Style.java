@@ -23,7 +23,7 @@
  */
 package me.dkzwm.widget.esl.annotation;
 
-import android.support.annotation.IntDef;
+import androidx.annotation.IntDef;
 import me.dkzwm.widget.esl.config.Constants;
 
 @IntDef({Constants.STYLE_NONE, Constants.STYLE_MIUI, Constants.STYLE_JIKE, Constants.STYLE_CUSTOM})

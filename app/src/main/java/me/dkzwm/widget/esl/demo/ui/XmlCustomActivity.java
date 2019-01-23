@@ -1,7 +1,7 @@
 package me.dkzwm.widget.esl.demo.ui;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import me.dkzwm.widget.esl.EasySwipeLayout;
 import me.dkzwm.widget.esl.IgnoreMakeEasy;
 import me.dkzwm.widget.esl.OnSwipeListener;

@@ -29,8 +29,8 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.PointF;
-import android.support.annotation.ColorInt;
 import android.util.TypedValue;
+import androidx.annotation.ColorInt;
 
 public class MIUIDrawer extends Drawer {
     protected Paint mBackgroundPaint;

@@ -25,10 +25,10 @@ package me.dkzwm.widget.esl;
 
 import android.app.Activity;
 import android.app.Application;
-import android.support.annotation.FloatRange;
-import android.support.annotation.IntRange;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import androidx.annotation.FloatRange;
+import androidx.annotation.IntRange;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import me.dkzwm.widget.esl.annotation.Direction;
 import me.dkzwm.widget.esl.annotation.Edge;
 import me.dkzwm.widget.esl.annotation.Style;
