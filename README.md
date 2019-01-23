@@ -22,6 +22,9 @@ dependencies {
 ## 快照
 ![](https://github.com/dkzwm/EasySwipeLayout/blob/master/snapshot/demo.gif)
 
+## 演示程序
+下载 [Demo.apk](https://raw.githubusercontent.com/dkzwm/EasySwipeLayout/master/apk/demo.apk)    
+
 ## 使用   
 #### 在Xml中配置
 ```

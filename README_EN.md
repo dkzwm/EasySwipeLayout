@@ -22,6 +22,9 @@ dependencies {
 ## Snapshot
 ![](https://github.com/dkzwm/EasySwipeLayout/blob/master/snapshot/demo.gif)
 
+## Demo
+Download [Demo.apk](https://raw.githubusercontent.com/dkzwm/EasySwipeLayout/master/apk/demo.apk)    
+
 ## How to use  
 #### Xml
 ```
