@@ -21,10 +21,6 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package me.dkzwm.widget.esl;
+package me.dkzwm.widget.esl
 
-import me.dkzwm.widget.esl.annotation.Edge;
-
-public interface OnSwipeListener {
-    void onSwipe(@Edge int side);
-}
+interface IgnoreMakeEasy

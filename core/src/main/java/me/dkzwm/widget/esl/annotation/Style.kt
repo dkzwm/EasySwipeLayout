@@ -21,15 +21,10 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package me.dkzwm.widget.esl.annotation;
+package me.dkzwm.widget.esl.annotation
 
-import androidx.annotation.IntDef;
-import me.dkzwm.widget.esl.config.Constants;
+import androidx.annotation.IntDef
+import me.dkzwm.widget.esl.config.Constants
 
-@IntDef({
-    Constants.DIRECTION_LEFT,
-    Constants.DIRECTION_TOP,
-    Constants.DIRECTION_RIGHT,
-    Constants.DIRECTION_BOTTOM
-})
-public @interface Edge {}
+@IntDef(Constants.STYLE_NONE, Constants.STYLE_MIUI, Constants.STYLE_JIKE, Constants.STYLE_CUSTOM)
+annotation class Style

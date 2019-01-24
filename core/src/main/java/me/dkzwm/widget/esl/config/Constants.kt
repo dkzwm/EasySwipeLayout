@@ -21,10 +21,22 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package me.dkzwm.widget.esl.annotation;
+package me.dkzwm.widget.esl.config
 
-import androidx.annotation.IntDef;
-import me.dkzwm.widget.esl.config.Constants;
+object Constants {
+    const val DIRECTION_LEFT = 0x01
+    const val DIRECTION_TOP = 0x01 shl 1
+    const val DIRECTION_RIGHT = 0x01 shl 2
+    const val DIRECTION_BOTTOM = 0x01 shl 3
+    const val DIRECTION_HORIZONTAL = 0x05
+    const  val DIRECTION_VERTICAL = 0x0A
+    const val DIRECTION_ALL = 0x0F
 
-@IntDef({Constants.STYLE_NONE, Constants.STYLE_MIUI, Constants.STYLE_JIKE, Constants.STYLE_CUSTOM})
-public @interface Style {}
+    const val STYLE_NONE = 0
+    const val STYLE_MIUI = 1
+    const val STYLE_JIKE = 2
+    const val STYLE_CUSTOM = 3
+
+    const val DEFAULT_RESISTANCE = 3f
+    const val DEFAULT_DURATION_OF_CLOSE = 500
+}

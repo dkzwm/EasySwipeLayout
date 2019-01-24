@@ -21,12 +21,11 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package me.dkzwm.widget.esl;
+package me.dkzwm.widget.esl
 
-import android.app.Activity;
-import androidx.annotation.NonNull;
-import me.dkzwm.widget.esl.annotation.Edge;
+import android.app.Activity
+import me.dkzwm.widget.esl.annotation.Edge
 
-public interface OnEasySwipeListener {
-    void onSwipe(@NonNull Activity activity, @Edge int side);
+interface OnEasySwipeListener {
+    fun onSwipe(activity: Activity, @Edge side: Int)
 }

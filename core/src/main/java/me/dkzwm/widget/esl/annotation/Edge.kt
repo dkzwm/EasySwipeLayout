@@ -21,22 +21,10 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package me.dkzwm.widget.esl.config;
+package me.dkzwm.widget.esl.annotation
 
-public interface Constants {
-    int DIRECTION_LEFT = 0x01;
-    int DIRECTION_TOP = 0x01 << 1;
-    int DIRECTION_RIGHT = 0x01 << 2;
-    int DIRECTION_BOTTOM = 0x01 << 3;
-    int DIRECTION_HORIZONTAL = 0x05;
-    int DIRECTION_VERTICAL = 0x0A;
-    int DIRECTION_ALL = 0x0F;
+import androidx.annotation.IntDef
+import me.dkzwm.widget.esl.config.Constants
 
-    int STYLE_NONE = 0;
-    int STYLE_MIUI = 1;
-    int STYLE_JIKE = 2;
-    int STYLE_CUSTOM = 3;
-
-    float DEFAULT_RESISTANCE = 3F;
-    int DEFAULT_DURATION_OF_CLOSE = 500;
-}
+@IntDef(Constants.DIRECTION_LEFT, Constants.DIRECTION_TOP, Constants.DIRECTION_RIGHT, Constants.DIRECTION_BOTTOM)
+annotation class Edge

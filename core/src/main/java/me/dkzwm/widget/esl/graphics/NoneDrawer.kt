@@ -21,45 +21,28 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package me.dkzwm.widget.esl.graphics;
+package me.dkzwm.widget.esl.graphics
 
-import android.content.Context;
-import android.graphics.Canvas;
-import android.graphics.PointF;
-import android.util.TypedValue;
+import android.content.Context
+import android.graphics.Canvas
+import android.graphics.PointF
+import android.util.TypedValue
 
-public class NoneDrawer extends Drawer {
-    private int mMaxSize;
+class NoneDrawer(context: Context) : Drawer(context) {
+    override val maxSize: Int = TypedValue.applyDimension(
+            TypedValue.COMPLEX_UNIT_DIP,
+            26f,
+            context.resources.displayMetrics).toInt()
 
-    public NoneDrawer(Context context) {
-        super(context);
-        mMaxSize =
-                (int)
-                        TypedValue.applyDimension(
-                                TypedValue.COMPLEX_UNIT_DIP,
-                                26,
-                                mContext.getResources().getDisplayMetrics());
-    }
+    override fun drawLeft(canvas: Canvas, downPoint: PointF, movedPoint: PointF) {}
 
-    @Override
-    public int getMaxSize() {
-        return mMaxSize;
-    }
+    override fun drawTop(canvas: Canvas, downPoint: PointF, movedPoint: PointF) {}
 
-    @Override
-    public void drawLeft(Canvas canvas, PointF downPoint, PointF movedPoint) {}
+    override fun drawRight(canvas: Canvas, downPoint: PointF, movedPoint: PointF) {}
 
-    @Override
-    public void drawTop(Canvas canvas, PointF downPoint, PointF movedPoint) {}
+    override fun drawBottom(canvas: Canvas, downPoint: PointF, movedPoint: PointF) {}
 
-    @Override
-    public void drawRight(Canvas canvas, PointF downPoint, PointF movedPoint) {}
-
-    @Override
-    public void drawBottom(Canvas canvas, PointF downPoint, PointF movedPoint) {}
-
-    @Override
-    public boolean canTrigger(int edge, float pos) {
-        return pos >= mMaxSize / 3f * 2;
+    override fun canTrigger(edge: Int, pos: Float): Boolean {
+        return pos >= maxSize / 3f * 2
     }
 }

@@ -1,6 +1,7 @@
 apply plugin: 'com.android.library'
 apply plugin: 'com.github.dcendents.android-maven'
 apply plugin: 'com.jfrog.bintray'
+apply plugin: 'kotlin-android'
 
 group = rootProject.ext.bintray['groupId']
 version=rootProject.ext.android['versionName']
@@ -25,6 +26,7 @@ android {
 
 dependencies {
     compileOnly rootProject.ext.libs.appcompatV7
+    compileOnly rootProject.ext.libs.kotlin
 }
 
 

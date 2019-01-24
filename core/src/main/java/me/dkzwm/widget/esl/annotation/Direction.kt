@@ -21,18 +21,10 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package me.dkzwm.widget.esl.annotation;
+package me.dkzwm.widget.esl.annotation
 
-import androidx.annotation.IntDef;
-import me.dkzwm.widget.esl.config.Constants;
+import androidx.annotation.IntDef
+import me.dkzwm.widget.esl.config.Constants
 
-@IntDef({
-    Constants.DIRECTION_LEFT,
-    Constants.DIRECTION_TOP,
-    Constants.DIRECTION_RIGHT,
-    Constants.DIRECTION_BOTTOM,
-    Constants.DIRECTION_HORIZONTAL,
-    Constants.DIRECTION_VERTICAL,
-    Constants.DIRECTION_ALL,
-})
-public @interface Direction {}
+@IntDef(Constants.DIRECTION_LEFT, Constants.DIRECTION_TOP, Constants.DIRECTION_RIGHT, Constants.DIRECTION_BOTTOM, Constants.DIRECTION_HORIZONTAL, Constants.DIRECTION_VERTICAL, Constants.DIRECTION_ALL)
+annotation class Direction

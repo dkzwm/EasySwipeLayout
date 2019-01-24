@@ -21,34 +21,29 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package me.dkzwm.widget.esl.util;
+package me.dkzwm.widget.esl.util
 
-import android.content.Context;
-import android.text.TextUtils;
-import java.lang.reflect.Constructor;
-import me.dkzwm.widget.esl.graphics.Drawer;
+import android.content.Context
+import android.text.TextUtils
+import me.dkzwm.widget.esl.graphics.Drawer
 
-public class Transformer {
-    private static final Class[] CONSTRUCTOR_PARAMS = new Class[] {Context.class};
+object Transformer {
+    private val CONSTRUCTOR_PARAMS = arrayOf<Class<*>>(Context::class.java)
 
-    public static Drawer parseDrawer(Context context, String name) {
-        if (TextUtils.isEmpty(name)) {
-            return null;
+    @JvmStatic
+    fun parseDrawer(context: Context, name: String?): Drawer? {
+        return if (TextUtils.isEmpty(name)) {
+            null
         } else {
-            String fullName;
-            if (name.startsWith(".")) {
-                fullName = context.getPackageName() + name;
-            } else {
-                fullName = name;
-            }
+            val fullName: String? = if (name?.startsWith(".") == true) context.packageName + name else name
             try {
-                @SuppressWarnings("unchecked")
-                Class<Drawer> clazz = (Class<Drawer>) context.getClassLoader().loadClass(fullName);
-                Constructor<Drawer> constructor = clazz.getConstructor(CONSTRUCTOR_PARAMS);
-                constructor.setAccessible(true);
-                return constructor.newInstance(context);
-            } catch (Exception e) {
-                throw new RuntimeException("Could not inflate Drawer subclass " + fullName, e);
+                @Suppress("UNCHECKED_CAST")
+                val clazz = context.classLoader.loadClass(fullName) as Class<Drawer>
+                val constructor = clazz.getConstructor(*CONSTRUCTOR_PARAMS)
+                constructor.isAccessible = true
+                constructor.newInstance(context)
+            } catch (e: Exception) {
+                throw RuntimeException("Could not inflate Drawer subclass $fullName", e)
             }
         }
     }
