@@ -18,6 +18,8 @@ dependencies {
     implementation 'me.dkzwm.widget.esl:core:0.0.1'
     AndroidX version
     implementation 'me.dkzwm.widget.esl:core:0.0.1.androidx'
+    AndroidX Kotlin version
+    implementation 'me.dkzwm.widget.esl:core:0.0.1.androidxKT'
 }
 ```
 
