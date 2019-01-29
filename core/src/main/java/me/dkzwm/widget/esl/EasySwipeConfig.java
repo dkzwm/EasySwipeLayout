@@ -36,6 +36,8 @@ import me.dkzwm.widget.esl.config.Constants;
 import me.dkzwm.widget.esl.graphics.Drawer;
 
 public class EasySwipeConfig {
+    private EasySwipeConfig() {}
+
     private static final OnEasySwipeListener sSwipeListener =
             new OnEasySwipeListener() {
                 @Override
