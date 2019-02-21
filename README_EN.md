@@ -1,5 +1,5 @@
 # EasySwipeLayout
-[![Release](https://img.shields.io/badge/JCenter-0.0.1-brightgreen.svg)](https://bintray.com/dkzwm/maven/esl)
+[![Release](https://img.shields.io/badge/JCenter-0.0.2-brightgreen.svg)](https://bintray.com/dkzwm/maven/esl)
 [![MinSdk](https://img.shields.io/badge/MinSdk-14-blue.svg)](https://developer.android.com/about/versions/android-4.0.html)
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/dkzwm/SmoothRefreshLayout/blob/master/LICENSE)
 ## English | [中文](https://github.com/dkzwm/EasySwipeLayout/blob/master/README.md)
@@ -15,11 +15,11 @@ A simple sliding layout view
 Add the following dependency to your build.gradle file:
 ```
 dependencies {
-    implementation 'me.dkzwm.widget.esl:core:0.0.1'
+    implementation 'me.dkzwm.widget.esl:core:0.0.2'
     AndroidX version
-    implementation 'me.dkzwm.widget.esl:core:0.0.1.androidx'
+    implementation 'me.dkzwm.widget.esl:core:0.0.2.androidx'
     AndroidX Kotlin version
-    implementation 'me.dkzwm.widget.esl:core:0.0.1.androidxKT'
+    implementation 'me.dkzwm.widget.esl:core:0.0.2.androidxKT'
 }
 ```
 
