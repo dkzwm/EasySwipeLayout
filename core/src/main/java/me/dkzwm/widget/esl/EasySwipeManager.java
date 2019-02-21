@@ -133,7 +133,19 @@ public class EasySwipeManager {
         public void onActivityResumed(Activity activity) {}
 
         @Override
-        public void onActivityPaused(Activity activity) {}
+        public void onActivityPaused(Activity activity) {
+            if (activity.isFinishing()) {
+                if (activity instanceof IgnoreMakeEasy) return;
+                View view = activity.getWindow().getDecorView();
+                if (view instanceof ViewGroup) {
+                    ViewGroup decor = (ViewGroup) view;
+                    EasySwipeLayout layout = decor.findViewById(R.id.sl_swipe_gesture_layout);
+                    if (layout != null) {
+                        layout.reset();
+                    }
+                }
+            }
+        }
 
         @Override
         public void onActivityStopped(Activity activity) {}

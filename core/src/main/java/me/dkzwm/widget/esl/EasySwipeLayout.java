@@ -520,7 +520,7 @@ public class EasySwipeLayout extends FrameLayout {
         invalidate();
     }
 
-    private void reset() {
+    public void reset() {
         mScroller.stop();
         mCurrPosF = 0;
         mTriggered = false;
