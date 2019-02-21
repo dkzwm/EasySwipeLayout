@@ -29,8 +29,8 @@ ext {
             buildToolsVersion: "28.0.3",
             minSdkVersion    : 14,
             targetSdkVersion : 28,
-            versionCode      : 1,
-            versionName      : "0.0.1.androidxKT"
+            versionCode      : 2,
+            versionName      : "0.0.2.androidxKT"
     ]
     libs = [
             appcompatV7: "androidx.appcompat:appcompat:1.1.0-alpha01",

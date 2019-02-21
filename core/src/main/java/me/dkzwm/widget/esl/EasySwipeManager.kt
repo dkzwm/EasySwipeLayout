@@ -118,7 +118,15 @@ object EasySwipeManager {
 
         override fun onActivityResumed(activity: Activity) {}
 
-        override fun onActivityPaused(activity: Activity) {}
+        override fun onActivityPaused(activity: Activity) {
+            if (activity.isFinishing) {
+                if (activity is IgnoreMakeEasy) return
+                val view = activity.window.decorView
+                if (view is ViewGroup) {
+                    view.findViewById<EasySwipeLayout>(R.id.sl_swipe_gesture_layout)?.reset()
+                }
+            }
+        }
 
         override fun onActivityStopped(activity: Activity) {}
 

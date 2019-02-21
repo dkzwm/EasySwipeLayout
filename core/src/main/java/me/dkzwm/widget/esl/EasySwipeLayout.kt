@@ -532,7 +532,7 @@ open class EasySwipeLayout : FrameLayout {
         invalidate()
     }
 
-    private fun reset() {
+    public fun reset() {
         mScroller.stop()
         mCurrPosF = 0f
         mTriggered = false
